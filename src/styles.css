@@ -1,0 +1,148 @@
+:root {
+  color-scheme: light;
+  --ink: #1f2937;
+  --muted: #6b7280;
+  --panel: #ffffff;
+  --line: #e5e7eb;
+  --soft-blue: #eef2ff;
+  --accent: #2563eb;
+  --success: #15803d;
+  --danger: #dc2626;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: #f8fafc;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.stat-card,
+.typing-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.stat-card {
+  min-height: 88px;
+  padding: 0.85rem;
+}
+
+.stat-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.stat-card strong {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin-top: 0.45rem;
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  line-height: 1;
+}
+
+.stat-card small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.typing-panel {
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.progress {
+  height: 0.45rem;
+  background-color: var(--soft-blue);
+}
+
+.sample-text {
+  min-height: 126px;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.9;
+}
+
+.sample-text span {
+  border-radius: 3px;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+.sample-text .correct {
+  color: var(--success);
+  background: rgba(21, 115, 71, 0.12);
+}
+
+.sample-text .wrong {
+  color: var(--danger);
+  background: rgba(198, 40, 40, 0.14);
+}
+
+.sample-text .current {
+  border-bottom: 2px solid var(--accent);
+}
+
+.typing-input {
+  resize: none;
+  min-height: 138px;
+  border-color: var(--line);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.typing-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.16);
+}
+
+.result-message {
+  min-height: 1.5rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.result-message.show {
+  color: var(--success);
+}
+
+@media (max-width: 767px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sample-text {
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 420px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
